@@ -32,13 +32,17 @@
       (function() {
         'use strict';
         //1) Always begin by checking whether the browser supports service workers.
+        if (!('serviceWorker' in navigator)) {
+          console.log('Service worker not supported 😭');
+          return;
+        }
 
 
 
 
         //2) registers the service worker, installing the service worker's script.
-        
-        navigator.serviceWorker.register('', {
+
+        navigator.serviceWorker.register('service-worker.js', {
           //10) Service workers have scope.
           //The scope of the service worker determines from which paths
           //the service worker intercepts requests.
@@ -46,9 +50,13 @@
         })
         //3) This returns a promise that resolves once the service worker is
         //successfully registered.
-        .then()
+        .then(function (registration) {
+          console.log('Registered at scope: ', registration.scope);
+        })
         //4) If the registration fails, the promise will reject.
-        .catch();
+        .catch(function (err) {
+          console.error('Registration failed: ', err);
+        });
       })();
     </script>
 

@@ -19,6 +19,7 @@ const gulp = require('gulp');
 const browserSync = require('browser-sync');
 const del = require('del');
 const runSequence = require('run-sequence');
+const wbBuild = require('workbox-build');
 
 // Clean output directory
 gulp.task('clean', () => del(['.tmp', 'build/*', '!build/.git'], {dot: true}));
@@ -33,6 +34,7 @@ gulp.task('copy', () =>
 gulp.task('default', ['clean'], cb => {
   runSequence(
     'copy',
+    'bundle-sw',
     cb
   );
 });
@@ -43,4 +45,19 @@ gulp.task('serve', ['default'], () => {
     port: 8002
   });
   gulp.watch('app/*', ['default']).on('change', browserSync.reload);
+});
+
+gulp.task('bundle-sw', () => {
+  return wbBuild.injectManifest({
+    swSrc: 'app/service-worker.js',
+    swDest: 'build/service-worker.js',
+    globDirectory: 'app',
+    staticFileGlobs: [
+      'index.html',
+      'css/main.css'
+    ]
+  })
+  .catch((err) => {
+    console.log('[ERROR] This happened: ' + err);
+  });
 });

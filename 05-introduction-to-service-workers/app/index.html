@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <!-- Set the viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Set character encoding -->
+    <meta charset="utf-8">
+    <!-- Set title -->
+    <title>Service Worker Example</title>
+    <!-- Add stylesheet -->
+    <link href="styles/index.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+      <!--
+        Every service worker goes through three steps in its lifecycle:
+       --Registration
+       --Installation
+       --Activation
+       -->
+    <h1>Service Worker Example</h1>
+
+    <a href="other.html">Other page</a>
+
+    <br><br>
+
+    <a href="below/another.html">Another page</a>
+
+    <script>
+      (function() {
+        'use strict';
+        //1) Always begin by checking whether the browser supports service workers.
+
+
+
+
+        //2) registers the service worker, installing the service worker's script.
+        
+        navigator.serviceWorker.register('', {
+          //10) Service workers have scope.
+          //The scope of the service worker determines from which paths
+          //the service worker intercepts requests.
+          //scope: 'below/'
+        })
+        //3) This returns a promise that resolves once the service worker is
+        //successfully registered.
+        .then()
+        //4) If the registration fails, the promise will reject.
+        .catch();
+      })();
+    </script>
+
+  </body>
+</html>

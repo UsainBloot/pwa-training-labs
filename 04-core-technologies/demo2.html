@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>04-core-technologies demo 1</title>
+</head>
+<body>
+    <!--A Promise is an object representing the eventual completion or failure of an asynchronous operation.
+    Essentially, a promise is a returned object which you attach to callbacks, instead of passing callbacks
+    into a function.-->
+
+    <script>
+        //Demo A
+        //E.g., instead of an old- style function that expects two callbacks,
+        //and calls one of them on eventual completion or failure:
+
+        //function successCallback(result) {
+        //    console.log("It succeeded with " + result);
+        //}
+
+        //function failureCallback(error) {
+        //    console.log("It failed with " + error);
+        //}
+
+        //doSomething(successCallback, failureCallback);
+    </script>
+
+    <script>
+        //Demo B
+        //…modern functions return a promise you can attach your callbacks to instead:
+        //let promise = doSomething();
+        //promise.then(successCallback, failureCallback);
+    </script>
+
+    <script>
+        // We call resolve(...) when what we were doing asynchronously was successful, and reject(...) when it failed.
+        // In this example, we use setTimeout(...) to simulate async code.
+        // In reality, you will probably be using something like XHR or an HTML5 API.
+
+        let myFirstPromise = 
+
+            myFirstPromise.then(
+
+            // successMessage is whatever we passed in the resolve(...) function above.
+            // It doesn't have to be a string, but if it is only a succeed message, it probably will be.
+          
+        );
+    </script>
+
+
+
+
+</body>
+</html> 
